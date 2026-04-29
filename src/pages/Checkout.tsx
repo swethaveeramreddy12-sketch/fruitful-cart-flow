@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { Loader2, Lock } from "lucide-react";
+import { Navigate } from "react-router-dom";
+import { Loader2, Lock, Wallet, Smartphone } from "lucide-react";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,11 +18,13 @@ const schema = z.object({
   pincode: z.string().min(4).max(10),
 });
 
+type Method = "phonepe" | "cod";
+
 const Checkout = () => {
-  const { items, subtotal, clear } = useCart();
-  const navigate = useNavigate();
+  const { items, subtotal } = useCart();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [method, setMethod] = useState<Method>("phonepe");
 
   if (items.length === 0) return <Navigate to="/cart" replace />;
 
@@ -36,9 +38,7 @@ const Checkout = () => {
     const parsed = schema.safeParse(raw);
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
-      parsed.error.issues.forEach((i) => {
-        fieldErrors[i.path[0] as string] = i.message;
-      });
+      parsed.error.issues.forEach((i) => { fieldErrors[i.path[0] as string] = i.message; });
       setErrors(fieldErrors);
       return;
     }
@@ -46,23 +46,29 @@ const Checkout = () => {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("create-checkout", {
+      const { data, error } = await supabase.functions.invoke("create-order", {
         body: {
           customer: parsed.data,
           items: items.map((i) => ({ productId: i.productId, quantity: i.quantity })),
+          method,
         },
       });
       if (error) throw error;
-      if (data?.url) {
-        // Persist a flag so success page can clear cart
-        sessionStorage.setItem("anunatural_pending_clear", "1");
-        window.location.href = data.url;
+      if (!data?.redirectUrl) throw new Error("No redirect URL returned");
+
+      sessionStorage.setItem("anunatural_pending_clear", "1");
+
+      if (data.method === "cod") {
+        // Stay in-app
+        window.location.assign(data.redirectUrl);
       } else {
-        throw new Error("No checkout URL returned");
+        // External PhonePe page
+        window.location.href = data.redirectUrl;
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast.error("Could not start checkout. Please try again.");
+      const msg = err?.message ?? "Could not place order. Please try again.";
+      toast.error(msg);
       setLoading(false);
     }
   };
@@ -72,29 +78,23 @@ const Checkout = () => {
       <Navbar />
       <main className="container py-16">
         <h1 className="font-display text-4xl font-bold text-primary sm:text-5xl">Checkout</h1>
-        <p className="mt-2 text-muted-foreground">Secure payment powered by Stripe.</p>
+        <p className="mt-2 text-muted-foreground">Pay securely with PhonePe or choose Cash on Delivery.</p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_400px]">
-          <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl bg-card p-6 shadow-soft sm:p-8">
+          <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl bg-card p-6 shadow-soft sm:p-8">
             <h2 className="font-display text-xl font-bold text-primary">Delivery details</h2>
 
             {[
               { name: "name", label: "Full name", type: "text", placeholder: "Your name" },
               { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-              { name: "phone", label: "Phone", type: "tel", placeholder: "+91…" },
+              { name: "phone", label: "Phone", type: "tel", placeholder: "10-digit mobile" },
               { name: "address", label: "Address", type: "text", placeholder: "Street, area" },
             ].map((f) => (
               <div key={f.name}>
-                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground" htmlFor={f.name}>
-                  {f.label}
-                </label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground" htmlFor={f.name}>{f.label}</label>
                 <input
-                  id={f.name}
-                  name={f.name}
-                  type={f.type}
-                  placeholder={f.placeholder}
-                  required
-                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  id={f.name} name={f.name} type={f.type} placeholder={f.placeholder} required
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
                 {errors[f.name] && <p className="mt-1 text-xs text-destructive">{errors[f.name]}</p>}
               </div>
@@ -113,13 +113,51 @@ const Checkout = () => {
               </div>
             </div>
 
+            {/* Payment method */}
+            <fieldset className="space-y-3 pt-2">
+              <legend className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Payment method</legend>
+
+              <label
+                className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${
+                  method === "phonepe" ? "border-primary bg-primary/5 shadow-soft" : "border-border hover:border-primary/40"
+                }`}
+              >
+                <input type="radio" name="method" value="phonepe" checked={method === "phonepe"} onChange={() => setMethod("phonepe")} className="sr-only" />
+                <div className="grid h-11 w-11 place-items-center rounded-full bg-mango text-secondary-foreground">
+                  <Smartphone className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-semibold text-foreground">Pay securely with PhonePe</p>
+                  <p className="text-xs text-muted-foreground">UPI, cards, wallets & netbanking</p>
+                </div>
+                <div className={`h-5 w-5 rounded-full border-2 ${method === "phonepe" ? "border-primary bg-primary" : "border-border"}`} />
+              </label>
+
+              <label
+                className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${
+                  method === "cod" ? "border-primary bg-primary/5 shadow-soft" : "border-border hover:border-primary/40"
+                }`}
+              >
+                <input type="radio" name="method" value="cod" checked={method === "cod"} onChange={() => setMethod("cod")} className="sr-only" />
+                <div className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <Wallet className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-semibold text-foreground">Cash on Delivery</p>
+                  <p className="text-xs text-muted-foreground">Pay in cash when your mangoes arrive</p>
+                </div>
+                <div className={`h-5 w-5 rounded-full border-2 ${method === "cod" ? "border-primary bg-primary" : "border-border"}`} />
+              </label>
+            </fieldset>
+
             <button
-              type="submit"
-              disabled={loading}
+              type="submit" disabled={loading}
               className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:scale-[1.01] disabled:opacity-60"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
-              {loading ? "Redirecting…" : `Pay ${formatINR(total)} securely`}
+              {loading
+                ? (method === "cod" ? "Placing order…" : "Redirecting to PhonePe…")
+                : (method === "cod" ? `Place order · ${formatINR(total)}` : `Pay ${formatINR(total)} with PhonePe`)}
             </button>
           </form>
 
