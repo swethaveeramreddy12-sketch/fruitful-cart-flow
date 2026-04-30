@@ -68,10 +68,20 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
 
+    // Extract user_id from JWT if caller is signed in (verify_jwt = false, so optional).
+    let userId: string | null = null;
+    const authHeader = req.headers.get("authorization") ?? "";
+    const token = authHeader.toLowerCase().startsWith("bearer ") ? authHeader.slice(7) : "";
+    if (token) {
+      const { data: u } = await supabase.auth.getUser(token);
+      userId = u.user?.id ?? null;
+    }
+
     const { data: order, error: insErr } = await supabase
       .from("orders")
       .insert({
         merchant_order_id: merchantOrderId,
+        user_id: userId,
         customer_name: customer.name,
         customer_email: customer.email,
         customer_phone: customer.phone,
