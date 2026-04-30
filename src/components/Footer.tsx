@@ -19,7 +19,20 @@ const Footer = () => (
         <h4 className="text-sm font-semibold uppercase tracking-wider text-secondary">Contact</h4>
         <ul className="mt-3 space-y-2 text-sm text-primary-foreground/80">
           <li>hello@anunaturalfoods.in</li>
-          <li>+91 90000 00000</li>
+          <li>
+            <a href="tel:+919642333337" className="hover:text-secondary">+91 96423 33337</a>
+          </li>
+          <li>
+            <a
+              href="https://wa.me/919642333337"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-secondary"
+            >
+              WhatsApp: +91 96423 33337
+            </a>
+          </li>
+          <li>Tirupati, Andhra Pradesh</li>
           <li>Mon–Sat, 9am–7pm IST</li>
         </ul>
       </div>
