@@ -17,13 +17,12 @@ const Navbar = () => {
           <span className="font-display text-xl font-bold text-primary">Anunatural Foods</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="/#shop" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Shop</a>
-          <a href="/#story" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Our Story</a>
-          <a href="/#promise" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Promise</a>
-          <span className="hidden items-center gap-1 text-xs font-semibold uppercase tracking-wider text-primary lg:inline-flex">
-            <Leaf className="h-3.5 w-3.5" /> 100% Natural
-          </span>
+        <nav className="hidden items-center gap-6 md:flex">
+          <a href="/#about" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">About us</a>
+          <a href="/#shop" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Mangoes</a>
+          <a href="/#tours" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Tours &amp; Travels</a>
+          <a href="/#testimonials" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Happy Customers</a>
+          <a href="/#contact" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Contact</a>
         </nav>
 
         <div className="flex items-center gap-2">

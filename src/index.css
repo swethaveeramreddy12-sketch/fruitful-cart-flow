@@ -9,47 +9,47 @@
 
 @layer base {
   :root {
-    /* Brand palette — leaf greens, ripe mango oranges, cream */
-    --background: 60 35% 97%;            /* warm cream */
-    --foreground: 140 35% 12%;           /* deep forest text */
+    /* Brand palette — clean greens & white */
+    --background: 0 0% 100%;             /* pure white */
+    --foreground: 145 45% 12%;           /* deep forest text */
 
     --card: 0 0% 100%;
-    --card-foreground: 140 35% 12%;
+    --card-foreground: 145 45% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 140 35% 12%;
+    --popover-foreground: 145 45% 12%;
 
-    --primary: 140 55% 22%;              /* deep organic green */
-    --primary-foreground: 60 40% 97%;
-    --primary-glow: 130 50% 40%;
+    --primary: 142 60% 24%;              /* deep organic green */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 142 55% 40%;
 
-    --secondary: 32 95% 55%;             /* ripe mango orange */
-    --secondary-foreground: 140 50% 12%;
+    --secondary: 140 40% 94%;            /* soft mint */
+    --secondary-foreground: 142 60% 18%;
 
-    --accent: 45 95% 58%;                /* golden saffron */
-    --accent-foreground: 140 50% 12%;
+    --accent: 142 55% 40%;               /* fresh leaf green */
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 60 25% 92%;
-    --muted-foreground: 140 15% 35%;
+    --muted: 140 25% 96%;
+    --muted-foreground: 145 15% 35%;
 
     --destructive: 0 75% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 140 20% 88%;
-    --input: 140 20% 88%;
-    --ring: 140 55% 22%;
+    --border: 140 20% 90%;
+    --input: 140 20% 90%;
+    --ring: 142 60% 24%;
 
     --radius: 1rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(140 55% 22%) 0%, hsl(130 50% 30%) 100%);
-    --gradient-mango: linear-gradient(135deg, hsl(45 95% 58%) 0%, hsl(28 95% 52%) 100%);
-    --gradient-cream: linear-gradient(180deg, hsl(60 35% 97%) 0%, hsl(50 40% 93%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(142 60% 22%) 0%, hsl(142 50% 35%) 100%);
+    --gradient-mango: linear-gradient(135deg, hsl(142 55% 40%) 0%, hsl(142 60% 24%) 100%);
+    --gradient-cream: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(140 30% 97%) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -8px hsl(140 50% 20% / 0.15);
-    --shadow-card: 0 12px 40px -12px hsl(140 50% 20% / 0.18);
-    --shadow-glow: 0 20px 60px -20px hsl(32 95% 55% / 0.45);
+    --shadow-soft: 0 4px 20px -8px hsl(142 50% 20% / 0.15);
+    --shadow-card: 0 12px 40px -12px hsl(142 50% 20% / 0.18);
+    --shadow-glow: 0 20px 60px -20px hsl(142 55% 40% / 0.4);
 
     /* Motion */
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);

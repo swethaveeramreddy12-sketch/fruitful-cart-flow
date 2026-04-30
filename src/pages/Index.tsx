@@ -1,4 +1,4 @@
-import { ArrowRight, Leaf, Sun, Truck } from "lucide-react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Plane, Mountain, Camera } from "lucide-react";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +9,45 @@ const features = [
   { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
   { icon: Sun, title: "Sun-ripened", text: "Allowed to ripen on the tree until they reach peak sweetness." },
   { icon: Truck, title: "Farm to door", text: "Hand-packed and shipped within 24 hours of harvest." },
+];
+
+const tours = [
+  {
+    icon: Mountain,
+    title: "Orchard Walks",
+    text: "Spend a morning under the mango canopies of Andhra. Pluck, taste and learn the craft of natural ripening.",
+    duration: "Half-day · Tirupati region",
+  },
+  {
+    icon: Plane,
+    title: "Mango Trail",
+    text: "A 3-day curated trail across our partner orchards — Banganapalli, Kesar and Himayat farms.",
+    duration: "3 days · Andhra & Telangana",
+  },
+  {
+    icon: Camera,
+    title: "Harvest Experience",
+    text: "Join our pickers during peak season. Hand-pack your own crate and ship it home.",
+    duration: "Seasonal · Apr–Jun",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Priya R.",
+    city: "Bengaluru",
+    quote: "The Banganapalli box was like the mangoes from my childhood. Fragrant, juicy, no chemical aftertaste.",
+  },
+  {
+    name: "Arjun M.",
+    city: "Hyderabad",
+    quote: "Reliable delivery and the Himayat was unreal. Anunatural is now our family's monthly ritual in summer.",
+  },
+  {
+    name: "Sneha K.",
+    city: "Mumbai",
+    quote: "You can taste the sunshine. Beautifully packed and every fruit ripened evenly. Five stars.",
+  },
 ];
 
 const Index = () => {
@@ -24,7 +63,7 @@ const Index = () => {
               <Leaf className="h-3.5 w-3.5" /> 100% Natural · Pesticide-free
             </span>
             <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-balance text-primary sm:text-6xl lg:text-7xl">
-              Naturally ripened <em className="not-italic text-secondary">mangoes</em>, straight from the orchard.
+              Naturally ripened <em className="not-italic text-accent">mangoes</em>, straight from the orchard.
             </h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               Anunatural Foods brings you India&apos;s finest mango varieties — picked at peak ripeness, packed by hand and delivered to your door.
@@ -37,10 +76,10 @@ const Index = () => {
                 Shop the harvest <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#story"
+                href="#about"
                 className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background px-7 py-3.5 text-sm font-semibold text-primary transition-colors hover:bg-muted"
               >
-                Our story
+                About us
               </a>
             </div>
           </div>
@@ -58,51 +97,28 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Promise */}
-      <section id="promise" className="container py-20">
-        <div className="grid gap-8 md:grid-cols-3">
-          {features.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-2xl border border-border/60 bg-card p-8 shadow-soft">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-mango text-secondary-foreground">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-primary">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Shop */}
-      <section id="shop" className="container py-12">
-        <div className="mb-12 max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-wider text-secondary">This season&apos;s harvest</span>
-          <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Choose your mango.</h2>
-          <p className="mt-3 text-muted-foreground">
-            Six iconic Indian varieties, each with its own character. Boxes ship pan-India.
-          </p>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </section>
-
-      {/* Story */}
-      <section id="story" className="bg-cream py-20">
-        <div className="container grid gap-10 lg:grid-cols-2 lg:items-center">
+      {/* About us */}
+      <section id="about" className="container py-20">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="space-y-5">
-            <span className="text-sm font-semibold uppercase tracking-wider text-secondary">Our story</span>
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
             <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
               Mangoes the way they were always meant to taste.
             </h2>
             <p className="text-muted-foreground">
-              Anunatural Foods began as a promise to bring back the mangoes our grandparents knew — fragrant, tree-ripened, and free of artificial ripening agents. We work directly with family-owned orchards from Ratnagiri to Junagadh, paying farmers fairly and shipping fruit only when it&apos;s truly ready.
+              Anunatural Foods began as a promise — to bring back the mangoes our grandparents knew. Fragrant, tree-ripened, and free of artificial ripening agents. From our home in Tirupati, we work directly with family-owned orchards across Andhra Pradesh, Telangana and beyond.
             </p>
             <p className="text-muted-foreground">
-              Every box you order travels from a sunlit branch to your kitchen in under 72 hours.
+              Every fruit is hand-picked at peak ripeness, naturally cured, and shipped within 24 hours. No carbide, no shortcuts — just sunshine, patience and a lot of care.
             </p>
+            <div className="grid grid-cols-3 gap-4 pt-4">
+              {features.map(({ icon: Icon, title }) => (
+                <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">
+                  <Icon className="mx-auto h-6 w-6 text-primary" />
+                  <p className="mt-2 text-xs font-semibold text-primary">{title}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {products.slice(0, 4).map((p) => (
@@ -116,6 +132,142 @@ const Index = () => {
                 className="aspect-square rounded-2xl object-cover shadow-soft"
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mangoes / Shop */}
+      <section id="shop" className="bg-cream py-20">
+        <div className="container">
+          <div className="mb-12 max-w-2xl">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">This season&apos;s harvest</span>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Our Mangoes.</h2>
+            <p className="mt-3 text-muted-foreground">
+              Six iconic Indian varieties, each with its own character. Boxes ship pan-India.
+            </p>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tours & Travels */}
+      <section id="tours" className="container py-20">
+        <div className="mb-12 max-w-2xl">
+          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Beyond the box</span>
+          <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Tours &amp; Travels.</h2>
+          <p className="mt-3 text-muted-foreground">
+            Visit the orchards, meet the farmers and taste mangoes the moment they leave the tree.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {tours.map(({ icon: Icon, title, text, duration }) => (
+            <div key={title} className="group rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-xl font-bold text-primary">{title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent">{duration}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <a
+            href="https://wa.me/919642333337?text=Hi%20Anunatural%20Foods%2C%20I%27d%20like%20to%20enquire%20about%20the%20orchard%20tours."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:scale-105"
+          >
+            Enquire on WhatsApp <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* Happy Customers */}
+      <section id="testimonials" className="bg-cream py-20">
+        <div className="container">
+          <div className="mb-12 max-w-2xl">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">Happy customers</span>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Loved across India.</h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="rounded-2xl border border-border/60 bg-card p-8 shadow-soft">
+                <div className="flex gap-1 text-accent">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-4 text-base text-foreground/90">&ldquo;{t.quote}&rdquo;</blockquote>
+                <figcaption className="mt-5 text-sm font-semibold text-primary">
+                  {t.name} <span className="font-normal text-muted-foreground">· {t.city}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="container py-20">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="space-y-5">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">Contact</span>
+            <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
+              Talk to us. We&apos;d love to hear from you.
+            </h2>
+            <p className="text-muted-foreground">
+              Questions about a box, bulk orders, or a visit to the orchards? Reach out — we usually reply the same day.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <a href="tel:+919642333337" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Phone className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Call us</p>
+                <p className="mt-1 font-semibold text-primary">+91 96423 33337</p>
+              </div>
+            </a>
+            <a
+              href="https://wa.me/919642333337"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white">
+                <svg viewBox="0 0 32 32" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M19.11 17.21c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.21-.62.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.46-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.39 0 1.41 1.02 2.77 1.16 2.96.14.19 2.01 3.07 4.87 4.31.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM16.04 5.33c-5.91 0-10.71 4.79-10.71 10.7 0 1.89.5 3.74 1.44 5.36L5.33 26.67l5.43-1.42a10.7 10.7 0 0 0 5.27 1.37h.01c5.9 0 10.7-4.79 10.7-10.7s-4.8-10.59-10.7-10.59z"/>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">WhatsApp</p>
+                <p className="mt-1 font-semibold text-primary">Chat with us · +91 96423 33337</p>
+              </div>
+            </a>
+            <a href="mailto:hello@anunaturalfoods.in" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Mail className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
+                <p className="mt-1 font-semibold text-primary">hello@anunaturalfoods.in</p>
+              </div>
+            </a>
+            <div className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <MapPin className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Visit us</p>
+                <p className="mt-1 font-semibold text-primary">Tirupati, Andhra Pradesh</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
