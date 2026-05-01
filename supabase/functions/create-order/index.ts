@@ -9,12 +9,10 @@ const corsHeaders = {
 // Server-side product catalogue (mirrors src/data/products.ts).
 // Pricing MUST come from server, never trust client.
 const PRODUCTS: Record<string, { name: string; price: number }> = {
-  alphonso:     { name: "Alphonso",            price: 1499 },
-  banganapalli: { name: "Banganapalli",        price: 999 },
-  kesar:        { name: "Kesar",               price: 1199 },
-  dasheri:      { name: "Dasheri",             price: 849 },
-  langra:       { name: "Langra",              price: 899 },
-  himayat:      { name: "Himayat (Imam Pasand)", price: 1799 },
+  "himam-pasand":  { name: "Himam Pasand",                 price: 1799 },
+  "banginapalli":  { name: "Banginapalli",                 price: 999 },
+  "groundnuts":    { name: "Groundnuts",                   price: 349 },
+  "groundnut-oil": { name: "Cold-pressed Groundnut Oil",   price: 599 },
 };
 
 type Item = { productId: string; quantity: number };
@@ -23,9 +21,9 @@ type Customer = {
   address: string; city: string; pincode: string;
 };
 
-function validate(body: any): { customer: Customer; items: Item[]; method: "phonepe" | "cod" } | string {
+function validate(body: any): { customer: Customer; items: Item[] } | string {
   if (!body || typeof body !== "object") return "Invalid body";
-  const { customer, items, method } = body;
+  const { customer, items } = body;
   if (!customer || typeof customer !== "object") return "Missing customer";
   for (const f of ["name", "email", "phone", "address", "city", "pincode"]) {
     if (typeof customer[f] !== "string" || customer[f].length < 2) return `Invalid ${f}`;
@@ -36,13 +34,7 @@ function validate(body: any): { customer: Customer; items: Item[]; method: "phon
     if (!PRODUCTS[it.productId]) return `Unknown product ${it.productId}`;
     if (!Number.isInteger(it.quantity) || it.quantity < 1 || it.quantity > 50) return "Invalid quantity";
   }
-  if (method !== "phonepe" && method !== "cod") return "Invalid payment method";
-  return { customer, items, method };
-}
-
-async function sha256Hex(input: string): Promise<string> {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
-  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
+  return { customer, items };
 }
 
 Deno.serve(async (req) => {
@@ -55,7 +47,7 @@ Deno.serve(async (req) => {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-    const { customer, items, method } = parsed;
+    const { customer, items } = parsed;
 
     // Recompute totals server-side
     const subtotal = items.reduce((s, it) => s + PRODUCTS[it.productId].price * it.quantity, 0);
@@ -68,7 +60,6 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
 
-    // Extract user_id from JWT if caller is signed in (verify_jwt = false, so optional).
     let userId: string | null = null;
     const authHeader = req.headers.get("authorization") ?? "";
     const token = authHeader.toLowerCase().startsWith("bearer ") ? authHeader.slice(7) : "";
@@ -97,8 +88,8 @@ Deno.serve(async (req) => {
         subtotal,
         shipping,
         total,
-        payment_method: method,
-        status: method === "cod" ? "placed" : "pending",
+        payment_method: "cod",
+        status: "placed",
       })
       .select()
       .single();
@@ -110,71 +101,8 @@ Deno.serve(async (req) => {
       });
     }
 
-    const origin = req.headers.get("origin") ?? req.headers.get("referer")?.split("/").slice(0, 3).join("/") ?? "";
-    const successUrl = `${origin}/order-success?order=${merchantOrderId}`;
-
-    if (method === "cod") {
-      return new Response(
-        JSON.stringify({ method: "cod", merchantOrderId, redirectUrl: successUrl }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
-
-    // ---- PhonePe Standard Checkout (PG) ----
-    const merchantId  = Deno.env.get("PHONEPE_MERCHANT_ID");
-    const saltKey     = Deno.env.get("PHONEPE_SALT_KEY");
-    const saltIndex   = Deno.env.get("PHONEPE_SALT_INDEX") ?? "1";
-    const env         = (Deno.env.get("PHONEPE_ENV") ?? "uat").toLowerCase();
-
-    if (!merchantId || !saltKey) {
-      return new Response(
-        JSON.stringify({ error: "PhonePe is not configured yet. Please add merchant credentials." }),
-        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
-
-    const baseUrl = env === "prod"
-      ? "https://api.phonepe.com/apis/hermes"
-      : "https://api-preprod.phonepe.com/apis/pg-sandbox";
-    const path = "/pg/v1/pay";
-
-    const payload = {
-      merchantId,
-      merchantTransactionId: merchantOrderId,
-      merchantUserId: `USR-${customer.email.replace(/[^a-zA-Z0-9]/g, "").slice(0, 20)}`,
-      amount: total * 100, // paise
-      redirectUrl: successUrl,
-      redirectMode: "REDIRECT",
-      callbackUrl: `${Deno.env.get("SUPABASE_URL")}/functions/v1/phonepe-callback`,
-      mobileNumber: customer.phone.replace(/\D/g, "").slice(-10),
-      paymentInstrument: { type: "PAY_PAGE" },
-    };
-
-    const base64Payload = btoa(JSON.stringify(payload));
-    const checksum = (await sha256Hex(base64Payload + path + saltKey)) + "###" + saltIndex;
-
-    const resp = await fetch(baseUrl + path, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-VERIFY": checksum,
-        accept: "application/json",
-      },
-      body: JSON.stringify({ request: base64Payload }),
-    });
-    const data = await resp.json();
-    console.log("PhonePe pay response", JSON.stringify(data));
-
-    const redirectUrl = data?.data?.instrumentResponse?.redirectInfo?.url;
-    if (!resp.ok || !redirectUrl) {
-      return new Response(
-        JSON.stringify({ error: data?.message ?? "PhonePe init failed", details: data }),
-        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
-
     return new Response(
-      JSON.stringify({ method: "phonepe", merchantOrderId, redirectUrl }),
+      JSON.stringify({ method: "cod", merchantOrderId }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (e) {
