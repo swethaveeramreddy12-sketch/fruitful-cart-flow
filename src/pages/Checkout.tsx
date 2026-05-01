@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Loader2, Lock, Wallet, Smartphone } from "lucide-react";
+import { Loader2, Lock, Wallet } from "lucide-react";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,7 +19,7 @@ const schema = z.object({
   pincode: z.string().min(4).max(10),
 });
 
-type Method = "phonepe" | "cod";
+type Method = "cod";
 
 type Prefill = {
   name: string; email: string; phone: string;
@@ -32,7 +32,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [method, setMethod] = useState<Method>("phonepe");
+  const [method] = useState<Method>("cod");
   const [prefill, setPrefill] = useState<Prefill | null>(null);
   const [prefillReady, setPrefillReady] = useState(false);
 
@@ -93,12 +93,7 @@ const Checkout = () => {
       if (!data?.redirectUrl) throw new Error("No redirect URL returned");
 
       sessionStorage.setItem("anunatural_pending_clear", "1");
-
-      if (data.method === "cod") {
-        navigate(`/order-success?order=${encodeURIComponent(data.merchantOrderId)}`);
-      } else {
-        window.location.href = data.redirectUrl;
-      }
+      navigate(`/order-success?order=${encodeURIComponent(data.merchantOrderId)}`);
     } catch (err: unknown) {
       console.error(err);
       const msg = err instanceof Error ? err.message : "Could not place order. Please try again.";
@@ -112,7 +107,7 @@ const Checkout = () => {
       <Navbar />
       <main className="container py-16">
         <h1 className="font-display text-4xl font-bold text-primary sm:text-5xl">Checkout</h1>
-        <p className="mt-2 text-muted-foreground">Pay securely with PhonePe or choose Cash on Delivery.</p>
+        <p className="mt-2 text-muted-foreground">Place your order with Cash on Delivery — pay when it arrives.</p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_400px]">
           <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl bg-card p-6 shadow-soft sm:p-8">
@@ -148,35 +143,21 @@ const Checkout = () => {
               </div>
             </div>
 
-            <fieldset className="space-y-3 pt-2">
+            <fieldset className="pt-2">
               <legend className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Payment method</legend>
-
-              <label className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${method === "phonepe" ? "border-primary bg-primary/5 shadow-soft" : "border-border hover:border-primary/40"}`}>
-                <input type="radio" name="method" value="phonepe" checked={method === "phonepe"} onChange={() => setMethod("phonepe")} className="sr-only" />
-                <div className="grid h-11 w-11 place-items-center rounded-full bg-mango text-secondary-foreground"><Smartphone className="h-5 w-5" /></div>
-                <div className="flex-1">
-                  <p className="font-semibold text-foreground">Pay securely with PhonePe</p>
-                  <p className="text-xs text-muted-foreground">UPI, cards, wallets & netbanking</p>
-                </div>
-                <div className={`h-5 w-5 rounded-full border-2 ${method === "phonepe" ? "border-primary bg-primary" : "border-border"}`} />
-              </label>
-
-              <label className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${method === "cod" ? "border-primary bg-primary/5 shadow-soft" : "border-border hover:border-primary/40"}`}>
-                <input type="radio" name="method" value="cod" checked={method === "cod"} onChange={() => setMethod("cod")} className="sr-only" />
+              <div className="mt-3 flex items-center gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 shadow-soft">
                 <div className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground"><Wallet className="h-5 w-5" /></div>
                 <div className="flex-1">
                   <p className="font-semibold text-foreground">Cash on Delivery</p>
-                  <p className="text-xs text-muted-foreground">Pay in cash when your mangoes arrive</p>
+                  <p className="text-xs text-muted-foreground">Pay in cash when your order arrives</p>
                 </div>
-                <div className={`h-5 w-5 rounded-full border-2 ${method === "cod" ? "border-primary bg-primary" : "border-border"}`} />
-              </label>
+                <input type="hidden" name="method" value="cod" />
+              </div>
             </fieldset>
 
             <button type="submit" disabled={loading} className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:scale-[1.01] disabled:opacity-60">
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
-              {loading
-                ? (method === "cod" ? "Placing order…" : "Redirecting to PhonePe…")
-                : (method === "cod" ? `Place order · ${formatINR(total)}` : `Pay ${formatINR(total)} with PhonePe`)}
+              {loading ? "Placing order…" : `Place order · ${formatINR(total)}`}
             </button>
           </form>
 

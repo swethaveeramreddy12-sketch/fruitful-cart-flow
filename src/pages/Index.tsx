@@ -120,30 +120,17 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {products.slice(0, 4).map((p) => (
-              <img
-                key={p.id}
-                src={p.image}
-                alt={p.name}
-                loading="lazy"
-                width={768}
-                height={768}
-                className="aspect-square rounded-2xl object-cover shadow-soft"
-              />
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Mangoes / Shop */}
+      {/* Mangoes & Naturals / Shop */}
       <section id="shop" className="bg-cream py-20">
         <div className="container">
           <div className="mb-12 max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-wider text-accent">This season&apos;s harvest</span>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Our Mangoes.</h2>
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our harvest</span>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Our Products.</h2>
             <p className="mt-3 text-muted-foreground">
-              Six iconic Indian varieties, each with its own character. Boxes ship pan-India.
+              Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
