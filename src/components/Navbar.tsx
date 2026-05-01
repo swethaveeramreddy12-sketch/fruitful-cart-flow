@@ -20,7 +20,7 @@ const Navbar = () => {
         <nav className="hidden items-center gap-6 md:flex">
           <a href="/#about" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">About us</a>
           <a href="/#shop" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Mangoes</a>
-          <a href="/#tours" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Tours &amp; Travels</a>
+          <a href="/#tours" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Oils</a>
           <a href="/#testimonials" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Happy Customers</a>
           <a href="/#contact" className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary">Contact</a>
         </nav>
