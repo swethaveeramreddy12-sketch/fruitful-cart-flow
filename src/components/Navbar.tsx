@@ -36,13 +36,7 @@ const Navbar = () => {
             href="/#shop"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
           >
-            Mangoes
-          </a>
-          <a
-            href="/#tours"
-            className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
-          >
-            Oils
+            Mangoes &amp; Oils
           </a>
           <a
             href="/#testimonials"

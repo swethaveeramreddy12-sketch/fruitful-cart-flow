@@ -1,9 +1,10 @@
-import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Plane, Mountain, Camera } from "lucide-react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star } from "lucide-react";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import heroImage from "@/assets/hero-mangoes.jpg";
+import aboutCollage from "@/assets/about-collage.jpg";
 
 const features = [
   { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
@@ -11,26 +12,8 @@ const features = [
   { icon: Truck, title: "Farm to door", text: "Hand-packed and shipped within 24 hours of harvest." },
 ];
 
-const tours = [
-  {
-    icon: Mountain,
-    title: "Orchard Walks",
-    text: "Spend a morning under the mango canopies of Andhra. Pluck, taste and learn the craft of natural ripening.",
-    duration: "Half-day · Tirupati region",
-  },
-  {
-    icon: Plane,
-    title: "Mango Trail",
-    text: "A 3-day curated trail across our partner orchards — Banganapalli, Kesar and Himayat farms.",
-    duration: "3 days · Andhra & Telangana",
-  },
-  {
-    icon: Camera,
-    title: "Harvest Experience",
-    text: "Join our pickers during peak season. Hand-pack your own crate and ship it home.",
-    duration: "Seasonal · Apr–Jun",
-  },
-];
+
+
 
 const testimonials = [
   {
@@ -120,6 +103,14 @@ const Index = () => {
               ))}
             </div>
           </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
+            <img
+              src={aboutCollage}
+              alt="Naturally ripened mangoes, fresh groundnuts and cold-pressed groundnut oil"
+              className="aspect-square w-full rounded-[2rem] object-cover shadow-card"
+            />
+          </div>
         </div>
       </section>
 
@@ -128,7 +119,7 @@ const Index = () => {
         <div className="container">
           <div className="mb-12 max-w-2xl">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our harvest</span>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Our Products.</h2>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Mangoes &amp; Oils.</h2>
             <p className="mt-3 text-muted-foreground">
               Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
@@ -141,38 +132,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tours & Travels */}
-      <section id="tours" className="container py-20">
-        <div className="mb-12 max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Beyond the box</span>
-          <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Tours &amp; Travels.</h2>
-          <p className="mt-3 text-muted-foreground">
-            Visit the orchards, meet the farmers and taste mangoes the moment they leave the tree.
-          </p>
-        </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {tours.map(({ icon: Icon, title, text, duration }) => (
-            <div key={title} className="group rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-primary">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent">{duration}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <a
-            href="https://wa.me/919642333337?text=Hi%20Anunatural%20Foods%2C%20I%27d%20like%20to%20enquire%20about%20the%20orchard%20tours."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:scale-105"
-          >
-            Enquire on WhatsApp <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
 
       {/* Happy Customers */}
       <section id="testimonials" className="bg-cream py-20">
