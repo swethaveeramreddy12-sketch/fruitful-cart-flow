@@ -12,26 +12,8 @@ const features = [
   { icon: Truck, title: "Farm to door", text: "Hand-packed and shipped within 24 hours of harvest." },
 ];
 
-const tours = [
-  {
-    icon: Mountain,
-    title: "Orchard Walks",
-    text: "Spend a morning under the mango canopies of Andhra. Pluck, taste and learn the craft of natural ripening.",
-    duration: "Half-day · Tirupati region",
-  },
-  {
-    icon: Plane,
-    title: "Mango Trail",
-    text: "A 3-day curated trail across our partner orchards — Banganapalli, Kesar and Himayat farms.",
-    duration: "3 days · Andhra & Telangana",
-  },
-  {
-    icon: Camera,
-    title: "Harvest Experience",
-    text: "Join our pickers during peak season. Hand-pack your own crate and ship it home.",
-    duration: "Seasonal · Apr–Jun",
-  },
-];
+
+
 
 const testimonials = [
   {
