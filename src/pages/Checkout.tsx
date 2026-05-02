@@ -81,6 +81,12 @@ const Checkout = () => {
     setErrors({});
     setLoading(true);
 
+    if (method === "phonepe") {
+      toast.info("PhonePe payments coming soon. Please use Cash on Delivery for now.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const { data, error } = await supabase.functions.invoke("create-order", {
         body: {
