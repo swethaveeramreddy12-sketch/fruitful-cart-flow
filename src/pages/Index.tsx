@@ -119,7 +119,7 @@ const Index = () => {
         <div className="container">
           <div className="mb-12 max-w-2xl">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our harvest</span>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Our Products.</h2>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Mangoes &amp; Oils.</h2>
             <p className="mt-3 text-muted-foreground">
               Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
