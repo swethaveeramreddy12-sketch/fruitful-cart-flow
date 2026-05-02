@@ -1,18 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { Product } from "@/data/products";
 import { useCart, formatINR } from "@/context/CartContext";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { add } = useCart();
+  const [qty, setQty] = useState(1);
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-card">
       <Link to={`/product/${product.id}`} className="relative block aspect-square overflow-hidden bg-muted">
         <img
           src={product.image}
-          alt={`${product.name} mangoes from ${product.origin}`}
+          alt={`${product.name} from ${product.origin}`}
           loading="lazy"
           width={768}
           height={768}
@@ -30,17 +32,40 @@ const ProductCard = ({ product }: { product: Product }) => {
           <p className="text-xs uppercase tracking-wider text-muted-foreground">{product.origin}</p>
         </div>
         <p className="text-sm text-muted-foreground">{product.weight}</p>
-        <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <span className="font-display text-2xl font-bold text-foreground">{formatINR(product.price)}</span>
+
+        <div className="mt-auto flex flex-col gap-3 pt-2">
+          <div className="flex items-center justify-between">
+            <span className="font-display text-2xl font-bold text-foreground">{formatINR(product.price)}</span>
+            <div className="inline-flex items-center rounded-full border border-border bg-background">
+              <button
+                type="button"
+                aria-label="Decrease quantity"
+                onClick={() => setQty((q) => Math.max(1, q - 1))}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted disabled:opacity-40"
+                disabled={qty <= 1}
+              >
+                <Minus className="h-3.5 w-3.5" />
+              </button>
+              <span className="w-8 text-center text-sm font-semibold tabular-nums">{qty}</span>
+              <button
+                type="button"
+                aria-label="Increase quantity"
+                onClick={() => setQty((q) => Math.min(50, q + 1))}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted"
+              >
+                <Plus className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
           <button
             type="button"
             onClick={() => {
-              add(product.id);
-              toast.success(`${product.name} added to cart`);
+              add(product.id, qty);
+              toast.success(`${qty} × ${product.name} added to cart`);
             }}
-            className="inline-flex items-center gap-1.5 rounded-full bg-mango px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-all hover:scale-105 hover:shadow-glow"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-mango px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-all hover:scale-[1.02] hover:shadow-glow"
           >
-            <Plus className="h-4 w-4" /> Add
+            <Plus className="h-4 w-4" /> Add to cart
           </button>
         </div>
       </div>
