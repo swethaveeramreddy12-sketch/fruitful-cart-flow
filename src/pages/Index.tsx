@@ -1,9 +1,10 @@
-import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Plane, Mountain, Camera } from "lucide-react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star } from "lucide-react";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import heroImage from "@/assets/hero-mangoes.jpg";
+import aboutCollage from "@/assets/about-collage.jpg";
 
 const features = [
   { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
