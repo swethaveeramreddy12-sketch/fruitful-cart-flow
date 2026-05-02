@@ -151,13 +151,23 @@ const Checkout = () => {
 
             <fieldset className="pt-2">
               <legend className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Payment method</legend>
-              <div className="mt-3 flex items-center gap-4 rounded-2xl border-2 border-primary bg-primary/5 p-4 shadow-soft">
-                <div className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground"><Wallet className="h-5 w-5" /></div>
-                <div className="flex-1">
-                  <p className="font-semibold text-foreground">Cash on Delivery</p>
-                  <p className="text-xs text-muted-foreground">Pay in cash when your order arrives</p>
-                </div>
-                <input type="hidden" name="method" value="cod" />
+              <div className="mt-3 grid gap-3">
+                <label className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${method === "cod" ? "border-primary bg-primary/5 shadow-soft" : "border-border bg-card hover:border-primary/40"}`}>
+                  <input type="radio" name="method" value="cod" checked={method === "cod"} onChange={() => setMethod("cod")} className="sr-only" />
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground"><Wallet className="h-5 w-5" /></div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground">Cash on Delivery</p>
+                    <p className="text-xs text-muted-foreground">Pay in cash when your order arrives</p>
+                  </div>
+                </label>
+                <label className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${method === "phonepe" ? "border-primary bg-primary/5 shadow-soft" : "border-border bg-card hover:border-primary/40"}`}>
+                  <input type="radio" name="method" value="phonepe" checked={method === "phonepe"} onChange={() => setMethod("phonepe")} className="sr-only" />
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-[#5f259f] text-white"><Smartphone className="h-5 w-5" /></div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground">PhonePe</p>
+                    <p className="text-xs text-muted-foreground">UPI, cards & wallets · coming soon</p>
+                  </div>
+                </label>
               </div>
             </fieldset>
 
