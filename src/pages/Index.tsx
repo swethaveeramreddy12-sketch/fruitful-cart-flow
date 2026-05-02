@@ -124,38 +124,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tours & Travels */}
-      <section id="tours" className="container py-20">
-        <div className="mb-12 max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Beyond the box</span>
-          <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Tours &amp; Travels.</h2>
-          <p className="mt-3 text-muted-foreground">
-            Visit the orchards, meet the farmers and taste mangoes the moment they leave the tree.
-          </p>
-        </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {tours.map(({ icon: Icon, title, text, duration }) => (
-            <div key={title} className="group rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-primary">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent">{duration}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <a
-            href="https://wa.me/919642333337?text=Hi%20Anunatural%20Foods%2C%20I%27d%20like%20to%20enquire%20about%20the%20orchard%20tours."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:scale-105"
-          >
-            Enquire on WhatsApp <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
 
       {/* Happy Customers */}
       <section id="testimonials" className="bg-cream py-20">
