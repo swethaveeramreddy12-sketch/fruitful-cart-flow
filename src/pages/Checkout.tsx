@@ -32,7 +32,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [method] = useState<Method>("cod");
+  const [method, setMethod] = useState<Method>("cod");
   const [prefill, setPrefill] = useState<Prefill | null>(null);
   const [prefillReady, setPrefillReady] = useState(false);
 
