@@ -86,13 +86,13 @@ const Index = () => {
           <div className="space-y-5">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
             <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-              Mangoes the way they were always meant to taste.
+              Welcome to Anu Naturals.
             </h2>
             <p className="text-muted-foreground">
-              Anunatural Foods began as a promise — to bring back the mangoes our grandparents knew. Fragrant, tree-ripened, and free of artificial ripening agents. From our home in Tirupati, we work directly with family-owned orchards across Andhra Pradesh, Telangana and beyond.
+              Your trusted source for pure, naturally grown products. We work directly with local farmers to bring you sun-ripened mangoes, premium groundnuts, and chemical-free cold-pressed oils.
             </p>
             <p className="text-muted-foreground">
-              Every fruit is hand-picked at peak ripeness, naturally cured, and shipped within 24 hours. No carbide, no shortcuts — just sunshine, patience and a lot of care.
+              Every product is hand-picked, naturally cured, and delivered fresh to your doorstep. No chemicals. No shortcuts — just honest, natural goodness you can trust.
             </p>
             <div className="grid grid-cols-3 gap-4 pt-4">
               {features.map(({ icon: Icon, title }) => (
