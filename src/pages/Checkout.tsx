@@ -19,7 +19,7 @@ const schema = z.object({
   pincode: z.string().min(4).max(10),
 });
 
-type Method = "cod";
+type Method = "cod" | "phonepe";
 
 type Prefill = {
   name: string; email: string; phone: string;
