@@ -90,7 +90,7 @@ const Checkout = () => {
         },
       });
       if (error) throw error;
-      if (!data?.redirectUrl) throw new Error("No redirect URL returned");
+      if (!data?.merchantOrderId) throw new Error("Order could not be placed");
 
       sessionStorage.setItem("anunatural_pending_clear", "1");
       navigate(`/order-success?order=${encodeURIComponent(data.merchantOrderId)}`);
