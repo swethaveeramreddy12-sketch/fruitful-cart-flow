@@ -103,6 +103,14 @@ const Index = () => {
               ))}
             </div>
           </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
+            <img
+              src={aboutCollage}
+              alt="Naturally ripened mangoes, fresh groundnuts and cold-pressed groundnut oil"
+              className="aspect-square w-full rounded-[2rem] object-cover shadow-card"
+            />
+          </div>
         </div>
       </section>
 
