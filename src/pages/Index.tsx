@@ -85,13 +85,13 @@ const Index = () => {
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
           <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-            Welcome to <em className="not-italic text-accent">Anu Naturals</em> — taste nature in every bite.
+            Rooted in <em className="not-italic text-accent">nature</em>, grown with love.
           </h2>
           <p className="text-lg text-foreground/80 leading-relaxed">
-            Straight from sun-soaked orchards to your kitchen — we partner with local farmers to bring you sun-ripened mangoes, premium groundnuts and chemical-free cold-pressed oils.
+            At <span className="font-semibold text-primary">Anu Naturals</span>, every mango, every groundnut and every drop of oil tells a story of sun-soaked orchards, hardworking farmers and timeless tradition.
           </p>
           <p className="text-lg text-foreground/80 leading-relaxed">
-            Hand-picked. Naturally cured. Delivered fresh. <span className="font-semibold text-primary">No chemicals. No shortcuts.</span> Just honest, natural goodness you can trust.
+            We skip the chemicals, the shortcuts and the middlemen — so you taste the real thing: pure, fresh and full of life. <span className="font-semibold text-primary">From our farms to your family.</span>
           </p>
           <div className="grid grid-cols-3 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
@@ -101,6 +101,14 @@ const Index = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="relative mt-12">
+          <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
+          <img
+            src={aboutCollage}
+            alt="Lush mango orchard with naturally ripening mangoes"
+            className="aspect-[16/9] w-full rounded-[2rem] object-cover shadow-card"
+          />
         </div>
       </section>
 
