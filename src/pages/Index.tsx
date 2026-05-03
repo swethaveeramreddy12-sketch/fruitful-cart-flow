@@ -82,34 +82,24 @@ const Index = () => {
 
       {/* About us */}
       <section id="about" className="container py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-5">
-            <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
-            <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-              Welcome to <em className="not-italic text-accent">Anu Naturals</em> — taste nature in every bite.
-            </h2>
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              Straight from sun-soaked orchards to your kitchen — we partner with local farmers to bring you sun-ripened mangoes, premium groundnuts and chemical-free cold-pressed oils.
-            </p>
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              Hand-picked. Naturally cured. Delivered fresh. <span className="font-semibold text-primary">No chemicals. No shortcuts.</span> Just honest, natural goodness you can trust.
-            </p>
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              {features.map(({ icon: Icon, title }) => (
-                <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">
-                  <Icon className="mx-auto h-6 w-6 text-primary" />
-                  <p className="mt-2 text-xs font-semibold text-primary">{title}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
-            <img
-              src={aboutCollage}
-              alt="Naturally ripened mangoes, fresh groundnuts and cold-pressed groundnut oil"
-              className="aspect-square w-full rounded-[2rem] object-cover shadow-card"
-            />
+        <div className="mx-auto max-w-3xl space-y-5 text-center">
+          <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
+          <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
+            Welcome to <em className="not-italic text-accent">Anu Naturals</em> — taste nature in every bite.
+          </h2>
+          <p className="text-lg text-foreground/80 leading-relaxed">
+            Straight from sun-soaked orchards to your kitchen — we partner with local farmers to bring you sun-ripened mangoes, premium groundnuts and chemical-free cold-pressed oils.
+          </p>
+          <p className="text-lg text-foreground/80 leading-relaxed">
+            Hand-picked. Naturally cured. Delivered fresh. <span className="font-semibold text-primary">No chemicals. No shortcuts.</span> Just honest, natural goodness you can trust.
+          </p>
+          <div className="grid grid-cols-3 gap-4 pt-4">
+            {features.map(({ icon: Icon, title }) => (
+              <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">
+                <Icon className="mx-auto h-6 w-6 text-primary" />
+                <p className="mt-2 text-xs font-semibold text-primary">{title}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
