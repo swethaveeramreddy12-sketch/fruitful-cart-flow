@@ -86,13 +86,13 @@ const Index = () => {
           <div className="space-y-5">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
             <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-              Welcome to Anu Naturals.
+              Welcome to <em className="not-italic text-accent">Anu Naturals</em> — taste nature in every bite.
             </h2>
-            <p className="text-muted-foreground">
-              Your trusted source for pure, naturally grown products. We work directly with local farmers to bring you sun-ripened mangoes, premium groundnuts, and chemical-free cold-pressed oils.
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Straight from sun-soaked orchards to your kitchen — we partner with local farmers to bring you sun-ripened mangoes, premium groundnuts and chemical-free cold-pressed oils.
             </p>
-            <p className="text-muted-foreground">
-              Every product is hand-picked, naturally cured, and delivered fresh to your doorstep. No chemicals. No shortcuts — just honest, natural goodness you can trust.
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Hand-picked. Naturally cured. Delivered fresh. <span className="font-semibold text-primary">No chemicals. No shortcuts.</span> Just honest, natural goodness you can trust.
             </p>
             <div className="grid grid-cols-3 gap-4 pt-4">
               {features.map(({ icon: Icon, title }) => (
