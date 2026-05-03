@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import heroImage from "@/assets/hero-mangoes.jpg";
 import aboutCollage from "@/assets/about-collage.jpg";
+import aboutCollage2 from "@/assets/about-collage-2.jpg";
 
 const features = [
   { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
@@ -102,12 +103,17 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <div className="relative mt-12">
+        <div className="relative mt-12 grid gap-6 md:grid-cols-2">
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
           <img
             src={aboutCollage}
             alt="Lush mango orchard with naturally ripening mangoes"
-            className="aspect-[16/9] w-full rounded-[2rem] object-cover shadow-card"
+            className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-card"
+          />
+          <img
+            src={aboutCollage2}
+            alt="Mangoes, groundnuts and cold-pressed groundnut oil"
+            className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-card"
           />
         </div>
       </section>
