@@ -120,7 +120,7 @@ const Index = () => {
         <div className="container">
           <div className="mb-12 max-w-2xl">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our harvest</span>
-            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Mangoes &amp; Oils.</h2>
+            <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Mangoes, Oils, Kaju &amp; Dates.</h2>
             <p className="mt-3 text-muted-foreground">
               Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
@@ -197,13 +197,13 @@ const Index = () => {
                 <p className="mt-1 font-semibold text-primary">Chat with us · +91 96423 33337</p>
               </div>
             </a>
-            <a href="mailto:hello@anunaturalfoods.in" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
+            <a href="mailto:anunaturals12@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Mail className="h-5 w-5" />
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
-                <p className="mt-1 font-semibold text-primary">hello@anunaturalfoods.in</p>
+                <p className="mt-1 font-semibold text-primary">anunaturals12@gmail.com</p>
               </div>
             </a>
             <div className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
@@ -212,7 +212,7 @@ const Index = () => {
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Visit us</p>
-                <p className="mt-1 font-semibold text-primary">Tirupati, Andhra Pradesh</p>
+                <p className="mt-1 font-semibold text-primary">Madanapalli, Andhra Pradesh, 517325</p>
               </div>
             </div>
           </div>
