@@ -77,8 +77,8 @@ export const products: Product[] = [
     origin: "Andhra Pradesh",
     description:
       "Farm-fresh, sun-dried groundnuts in shell. Crunchy, nutty and perfect for daily snacking or home roasting.",
-    price: 349,
-    weight: "2 kg pack",
+    price: 190,
+    weight: "1 kg pack",
     image: groundnuts,
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     origin: "Andhra Pradesh",
     description:
       "Wood-pressed (kachi ghani) groundnut oil. Unrefined, aromatic and rich in natural goodness — ideal for everyday cooking.",
-    price: 599,
+    price: 350,
     weight: "1 litre bottle",
     image: groundnutOil,
     badge: "Cold-pressed",
