@@ -31,7 +31,11 @@ const ProductCard = ({ product }: { product: Product }) => {
           <h3 className="font-display text-2xl font-bold text-primary">{product.name}</h3>
           <p className="text-xs uppercase tracking-wider text-muted-foreground">{product.origin}</p>
         </div>
-        <p className="text-sm text-muted-foreground">{product.weight}</p>
+        <p className="text-sm text-muted-foreground">{product.description}</p>
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          <span className="rounded-full bg-muted px-2.5 py-1 font-semibold text-foreground">{product.weight}</span>
+          <span className="rounded-full bg-accent/10 px-2.5 py-1 font-semibold text-accent">{product.calories}</span>
+        </div>
 
         <div className="mt-auto flex flex-col gap-3 pt-2">
           <div className="flex items-center justify-between">
