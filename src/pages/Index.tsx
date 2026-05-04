@@ -85,6 +85,12 @@ const Index = () => {
       <section id="about" className="container py-20">
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
+          <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
+            Rooted in nature. <em className="not-italic text-accent">Grown with love.</em>
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            At <strong className="text-primary">Anu Natural Foods</strong>, every mango, nut and date is a promise — sun-ripened in family orchards, hand-picked at peak sweetness and packed the same day. No carbide, no chemicals, no shortcuts. Just pure, honest goodness from our farms in Andhra Pradesh to your doorstep across India.
+          </p>
           <div className="grid grid-cols-3 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
               <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">

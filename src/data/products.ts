@@ -2,6 +2,8 @@ import banginapalli from "@/assets/mango-banginapalli.jpg";
 import himamPasand from "@/assets/mango-himam-pasand.jpg";
 import groundnuts from "@/assets/groundnuts.jpg";
 import groundnutOil from "@/assets/groundnut-oil.jpg";
+import kaju from "@/assets/kaju.png";
+import medjoolDates from "@/assets/medjool-dates.png";
 
 export type Product = {
   id: string;
@@ -22,8 +24,8 @@ export const products: Product[] = [
     origin: "Andhra Pradesh",
     description:
       "The royal mango. Fibre-less, melt-in-mouth flesh with a perfume that fills the room. Naturally ripened, no carbide.",
-    price: 1799,
-    weight: "3 kg box (5–7 mangoes)",
+    price: 1000,
+    weight: "5 kg box",
     image: himamPasand,
     badge: "Premium",
   },
@@ -33,10 +35,41 @@ export const products: Product[] = [
     origin: "Andhra Pradesh",
     description:
       "Large, golden and fibre-free. Buttery texture with classic mango sweetness — picked at peak ripeness.",
-    price: 999,
-    weight: "5 kg box (10–12 mangoes)",
+    price: 500,
+    weight: "5 kg box",
     image: banginapalli,
     badge: "Bestseller",
+  },
+  {
+    id: "medjool-dates-jumbo",
+    name: "Medjool Dates — Jumbo",
+    origin: "Premium Grade",
+    description:
+      "Jumbo-sized Medjool dates — soft, caramel-rich and naturally sweet. Perfect for daily energy and gifting.",
+    price: 950,
+    weight: "1 kg pack",
+    image: medjoolDates,
+    badge: "Jumbo",
+  },
+  {
+    id: "medjool-dates-large",
+    name: "Medjool Dates — Large",
+    origin: "Premium Grade",
+    description:
+      "Large Medjool dates with a luscious chewy texture and honey-like sweetness. A wholesome everyday treat.",
+    price: 1000,
+    weight: "1 kg pack",
+    image: medjoolDates,
+  },
+  {
+    id: "kaju",
+    name: "Kaju (Cashews)",
+    origin: "Premium Grade",
+    description:
+      "Whole, creamy cashews — crisp, buttery and perfect for snacking, sweets and rich Indian gravies.",
+    price: 1300,
+    weight: "1 kg pack",
+    image: kaju,
   },
   {
     id: "groundnuts",
