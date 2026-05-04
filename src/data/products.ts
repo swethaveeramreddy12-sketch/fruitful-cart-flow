@@ -15,6 +15,8 @@ export type Product = {
   weight: string;
   image: string;
   badge?: string;
+  /** Approx calories per 100g (or per 100ml for oil) */
+  calories: string;
 };
 
 export const products: Product[] = [
@@ -22,75 +24,75 @@ export const products: Product[] = [
     id: "himam-pasand",
     name: "Himam Pasand",
     origin: "Andhra Pradesh",
-    description:
-      "The royal mango. Fibre-less, melt-in-mouth flesh with a perfume that fills the room. Naturally ripened, no carbide.",
+    description: "Royal mango. Fibre-less, fragrant and naturally ripened.",
     price: 1000,
-    weight: "5 kg box",
+    weight: "5 kg",
     image: himamPasand,
     badge: "Premium",
+    calories: "60 kcal / 100g",
   },
   {
     id: "banginapalli",
     name: "Banginapalli",
     origin: "Andhra Pradesh",
-    description:
-      "Large, golden and fibre-free. Buttery texture with classic mango sweetness — picked at peak ripeness.",
+    description: "Golden, fibre-free and buttery sweet.",
     price: 500,
-    weight: "5 kg box",
+    weight: "5 kg",
     image: banginapalli,
     badge: "Bestseller",
+    calories: "60 kcal / 100g",
   },
   {
     id: "medjool-dates-jumbo",
     name: "Medjool Dates — Jumbo",
     origin: "Premium Grade",
-    description:
-      "Jumbo-sized Medjool dates — soft, caramel-rich and naturally sweet. Perfect for daily energy and gifting.",
+    description: "Jumbo, soft and caramel-rich.",
     price: 950,
     weight: "1 kg pack",
     image: medjoolDates,
     badge: "Jumbo",
+    calories: "277 kcal / 100g",
   },
   {
     id: "medjool-dates-large",
     name: "Medjool Dates — Large",
     origin: "Premium Grade",
-    description:
-      "Large Medjool dates with a luscious chewy texture and honey-like sweetness. A wholesome everyday treat.",
+    description: "Chewy, honey-sweet everyday treat.",
     price: 1000,
     weight: "1 kg pack",
     image: medjoolDates,
+    calories: "277 kcal / 100g",
   },
   {
     id: "kaju",
     name: "Kaju (Cashews)",
     origin: "Premium Grade",
-    description:
-      "Whole, creamy cashews — crisp, buttery and perfect for snacking, sweets and rich Indian gravies.",
+    description: "Whole, creamy and buttery cashews.",
     price: 1300,
     weight: "1 kg pack",
     image: kaju,
+    calories: "553 kcal / 100g",
   },
   {
     id: "groundnuts",
     name: "Groundnuts",
     origin: "Andhra Pradesh",
-    description:
-      "Farm-fresh, sun-dried groundnuts in shell. Crunchy, nutty and perfect for daily snacking or home roasting.",
+    description: "Sun-dried, crunchy farm-fresh groundnuts.",
     price: 190,
     weight: "1 kg pack",
     image: groundnuts,
+    calories: "567 kcal / 100g",
   },
   {
     id: "groundnut-oil",
     name: "Cold-pressed Groundnut Oil",
     origin: "Andhra Pradesh",
-    description:
-      "Wood-pressed (kachi ghani) groundnut oil. Unrefined, aromatic and rich in natural goodness — ideal for everyday cooking.",
+    description: "Wood-pressed, unrefined and aromatic.",
     price: 350,
     weight: "1 litre bottle",
     image: groundnutOil,
     badge: "Cold-pressed",
+    calories: "884 kcal / 100ml",
   },
 ];
 
