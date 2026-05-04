@@ -17,6 +17,8 @@ export type Product = {
   badge?: string;
   /** Approx calories per 100g (or per 100ml for oil) */
   calories: string;
+  /** Mark true to show as Out of stock and disable add-to-cart */
+  outOfStock?: boolean;
 };
 
 export const products: Product[] = [
