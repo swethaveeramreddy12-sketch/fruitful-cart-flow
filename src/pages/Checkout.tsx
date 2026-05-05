@@ -154,14 +154,6 @@ const Checkout = () => {
                     <p className="text-xs text-muted-foreground">Pay in cash when your order arrives</p>
                   </div>
                 </label>
-                <label className={`flex cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 transition-all ${method === "phonepe" ? "border-primary bg-primary/5 shadow-soft" : "border-border bg-card hover:border-primary/40"}`}>
-                  <input type="radio" name="method" value="phonepe" checked={method === "phonepe"} onChange={() => setMethod("phonepe")} className="sr-only" />
-                  <div className="grid h-11 w-11 place-items-center rounded-full bg-[#5f259f] text-white"><Smartphone className="h-5 w-5" /></div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-foreground">PhonePe</p>
-                    <p className="text-xs text-muted-foreground">UPI, cards & wallets · coming soon</p>
-                  </div>
-                </label>
               </div>
             </fieldset>
 
