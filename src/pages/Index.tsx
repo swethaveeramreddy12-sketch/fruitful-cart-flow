@@ -8,6 +8,7 @@ import aboutCollage from "@/assets/about-collage.jpg";
 import aboutCollage2 from "@/assets/about-collage-2.jpg";
 
 const features = [
+  { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
   { icon: Sun, title: "Sun-ripened", text: "Allowed to ripen on the tree until they reach peak sweetness." },
   { icon: Truck, title: "Farm to door", text: "Hand-packed and shipped within 24 hours of harvest." },
 ];
@@ -93,7 +94,7 @@ const Index = () => {
           <p className="text-lg text-muted-foreground">
             Anunatural Foods supplies naturally cured, tree-ripened mangoes and cold-pressed cooking oils sourced from select family farms in Andhra Pradesh and Telangana. All products are prepared using traditional methods within 24 hours of harvest, ensuring absence of carbide, additives, preservatives, and artificial refining.
           </p>
-          <div className="grid grid-cols-2 gap-4 pt-4">
+          <div className="grid grid-cols-3 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
               <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">
                 <Icon className="mx-auto h-6 w-6 text-primary" />
