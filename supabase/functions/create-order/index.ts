@@ -9,10 +9,13 @@ const corsHeaders = {
 // Server-side product catalogue (mirrors src/data/products.ts).
 // Pricing MUST come from server, never trust client.
 const PRODUCTS: Record<string, { name: string; price: number }> = {
-  "himam-pasand":  { name: "Himam Pasand",                 price: 1799 },
-  "banginapalli":  { name: "Banginapalli",                 price: 999 },
-  "groundnuts":    { name: "Groundnuts",                   price: 349 },
-  "groundnut-oil": { name: "Cold-pressed Groundnut Oil",   price: 599 },
+  "himam-pasand":         { name: "Himam Pasand",                 price: 1000 },
+  "banginapalli":         { name: "Banginapalli",                 price: 500 },
+  "medjool-dates-jumbo":  { name: "Medjool Dates — Jumbo",        price: 950 },
+  "medjool-dates-large":  { name: "Medjool Dates — Large",        price: 1000 },
+  "kaju":                 { name: "Kaju (Cashews)",               price: 1300 },
+  "groundnuts":           { name: "Groundnuts",                   price: 190 },
+  "groundnut-oil":        { name: "Cold-pressed Groundnut Oil",   price: 350 },
 };
 
 type Item = { productId: string; quantity: number };
