@@ -86,10 +86,13 @@ const Index = () => {
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
           <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-            Rooted in nature. <em className="not-italic text-accent">Grown with love.</em>
+            Welcome to <em className="not-italic text-accent">Anunatural Foods</em>
           </h2>
           <p className="text-lg text-muted-foreground">
-            At <strong className="text-primary">Anu Natural Foods</strong>, every mango, nut and date is a promise — sun-ripened in family orchards, hand-picked at peak sweetness and packed the same day. No carbide, no chemicals, no shortcuts. Just pure, honest goodness from our farms in Andhra Pradesh to your doorstep across India.
+            Anunatural Foods delivers tree-ripened mangoes and cold-pressed oils from Andhra Pradesh and Telangana family farms, cultivated and processed without chemicals, artificial ripening, or refining to preserve natural purity.
+          </p>
+          <p className="text-lg text-muted-foreground">
+            Anunatural Foods supplies naturally cured, tree-ripened mangoes and cold-pressed cooking oils sourced from select family farms in Andhra Pradesh and Telangana. All products are prepared using traditional methods within 24 hours of harvest, ensuring absence of carbide, additives, preservatives, and artificial refining.
           </p>
           <div className="grid grid-cols-3 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
