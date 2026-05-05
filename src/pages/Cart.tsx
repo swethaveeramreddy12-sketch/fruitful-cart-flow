@@ -116,11 +116,9 @@ const Cart = () => {
               >
                 Proceed to checkout
               </button>
-              {subtotal < 1500 && (
-                <p className="mt-3 text-center text-xs text-muted-foreground">
-                  Add {formatINR(1500 - subtotal)} more for free shipping.
-                </p>
-              )}
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                Flat shipping of {formatINR(59)} across India.
+              </p>
             </aside>
           </div>
         )}
