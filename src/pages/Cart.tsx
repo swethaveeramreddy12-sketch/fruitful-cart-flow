@@ -8,7 +8,7 @@ import { findProduct } from "@/data/products";
 const Cart = () => {
   const { items, setQty, remove, subtotal } = useCart();
   const navigate = useNavigate();
-  const shipping = items.length === 0 ? 0 : subtotal >= 1500 ? 0 : 99;
+  const shipping = items.length === 0 ? 0 : 59;
   const total = subtotal + shipping;
 
   return (
