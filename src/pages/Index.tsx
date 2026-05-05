@@ -93,7 +93,7 @@ const Index = () => {
           <p className="text-lg text-muted-foreground">
             Anunatural Foods supplies naturally cured, tree-ripened mangoes and cold-pressed cooking oils sourced from select family farms in Andhra Pradesh and Telangana. All products are prepared using traditional methods within 24 hours of harvest, ensuring absence of carbide, additives, preservatives, and artificial refining.
           </p>
-          <div className="grid grid-cols-3 gap-4 pt-4">
+          <div className="grid grid-cols-2 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
               <div key={title} className="rounded-xl border border-border/60 bg-card p-4 text-center">
                 <Icon className="mx-auto h-6 w-6 text-primary" />
