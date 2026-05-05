@@ -197,13 +197,13 @@ const Index = () => {
                 <p className="mt-1 font-semibold text-primary">Chat with us · +91 96423 33337</p>
               </div>
             </a>
-            <a href="mailto:anunaturals12@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
+            <a href="mailto:anunaturalfoods12@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Mail className="h-5 w-5" />
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
-                <p className="mt-1 font-semibold text-primary">anunaturals12@gmail.com</p>
+                <p className="mt-1 font-semibold text-primary">anunaturalfoods12@gmail.com</p>
               </div>
             </a>
             <div className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
