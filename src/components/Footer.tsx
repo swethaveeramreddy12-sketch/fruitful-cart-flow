@@ -4,11 +4,13 @@ const Footer = () => (
   <footer className="mt-24 border-t border-border/60 bg-primary text-primary-foreground">
     <div className="container grid gap-10 py-16 md:grid-cols-3">
       <div>
-        <div className="rounded-2xl bg-background p-4 inline-block">
-          <img src={anuLogo} alt="Anu Natural Foods" className="h-16 w-auto object-contain" />
+        <div className="flex items-center gap-4">
+          <div className="rounded-2xl bg-background p-4">
+            <img src={anuLogo} alt="Anu Natural Foods" className="h-16 w-auto object-contain" />
+          </div>
+          <p className="font-display text-2xl font-bold text-secondary">Reddivary</p>
         </div>
-        <p className="mt-4 font-display text-xl font-bold text-secondary">Reddivary</p>
-        <p className="mt-3 max-w-xs text-sm text-primary-foreground/80">
+        <p className="mt-4 max-w-xs text-sm text-primary-foreground/80">
           Naturally ripened mangoes, sourced directly from family-owned orchards across India. No pesticides. No carbide. Just sunshine and patience.
         </p>
       </div>
