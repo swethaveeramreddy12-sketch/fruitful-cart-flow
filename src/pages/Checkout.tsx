@@ -183,7 +183,7 @@ const Checkout = () => {
             </ul>
             <dl className="mt-4 space-y-2 border-t border-border pt-4 text-sm">
               <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>{formatINR(subtotal)}</dd></div>
-              <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd>{shipping === 0 ? "Free" : formatINR(shipping)}</dd></div>
+              <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd>{formatINR(shipping)}</dd></div>
               <div className="flex justify-between text-base font-semibold text-primary pt-2 border-t border-border"><dt>Total</dt><dd className="font-display text-xl">{formatINR(total)}</dd></div>
             </dl>
           </aside>
