@@ -54,7 +54,7 @@ Deno.serve(async (req) => {
 
     // Recompute totals server-side
     const subtotal = items.reduce((s, it) => s + PRODUCTS[it.productId].price * it.quantity, 0);
-    const shipping = subtotal >= 1500 ? 0 : 99;
+    const shipping = 59;
     const total = subtotal + shipping;
     const merchantOrderId = `ANU-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
 
