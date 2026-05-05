@@ -101,7 +101,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between">
                   <dt className="text-muted-foreground">Shipping</dt>
-                  <dd className="font-semibold">{shipping === 0 ? "Free" : formatINR(shipping)}</dd>
+                  <dd className="font-semibold">{formatINR(shipping)}</dd>
                 </div>
                 <div className="my-3 h-px bg-border" />
                 <div className="flex justify-between text-base">
