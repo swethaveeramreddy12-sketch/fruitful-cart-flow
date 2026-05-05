@@ -8,7 +8,7 @@ import { findProduct } from "@/data/products";
 const Cart = () => {
   const { items, setQty, remove, subtotal } = useCart();
   const navigate = useNavigate();
-  const shipping = items.length === 0 ? 0 : subtotal >= 1500 ? 0 : 99;
+  const shipping = items.length === 0 ? 0 : 59;
   const total = subtotal + shipping;
 
   return (
@@ -101,7 +101,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between">
                   <dt className="text-muted-foreground">Shipping</dt>
-                  <dd className="font-semibold">{shipping === 0 ? "Free" : formatINR(shipping)}</dd>
+                  <dd className="font-semibold">{formatINR(shipping)}</dd>
                 </div>
                 <div className="my-3 h-px bg-border" />
                 <div className="flex justify-between text-base">
@@ -116,11 +116,9 @@ const Cart = () => {
               >
                 Proceed to checkout
               </button>
-              {subtotal < 1500 && (
-                <p className="mt-3 text-center text-xs text-muted-foreground">
-                  Add {formatINR(1500 - subtotal)} more for free shipping.
-                </p>
-              )}
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                Flat shipping of {formatINR(59)} across India.
+              </p>
             </aside>
           </div>
         )}

@@ -23,7 +23,7 @@ const Footer = () => (
       <div>
         <h4 className="text-sm font-semibold uppercase tracking-wider text-secondary">Contact</h4>
         <ul className="mt-3 space-y-2 text-sm text-primary-foreground/80">
-          <li>anunaturals12@gmail.com</li>
+          <li>anunaturalfoods12@gmail.com</li>
           <li>
             <a href="tel:+919642333337" className="hover:text-secondary">+91 96423 33337</a>
           </li>

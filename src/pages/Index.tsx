@@ -86,10 +86,13 @@ const Index = () => {
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-accent">About us</span>
           <h2 className="font-display text-4xl font-bold text-primary sm:text-5xl text-balance">
-            Rooted in nature. <em className="not-italic text-accent">Grown with love.</em>
+            Welcome to <em className="not-italic text-accent">Anunatural Foods</em>
           </h2>
           <p className="text-lg text-muted-foreground">
-            At <strong className="text-primary">Anu Natural Foods</strong>, every mango, nut and date is a promise — sun-ripened in family orchards, hand-picked at peak sweetness and packed the same day. No carbide, no chemicals, no shortcuts. Just pure, honest goodness from our farms in Andhra Pradesh to your doorstep across India.
+            Anunatural Foods delivers tree-ripened mangoes and cold-pressed oils from Andhra Pradesh and Telangana family farms, cultivated and processed without chemicals, artificial ripening, or refining to preserve natural purity.
+          </p>
+          <p className="text-lg text-muted-foreground">
+            Anunatural Foods supplies naturally cured, tree-ripened mangoes and cold-pressed cooking oils sourced from select family farms in Andhra Pradesh and Telangana. All products are prepared using traditional methods within 24 hours of harvest, ensuring absence of carbide, additives, preservatives, and artificial refining.
           </p>
           <div className="grid grid-cols-3 gap-4 pt-4">
             {features.map(({ icon: Icon, title }) => (
@@ -197,13 +200,13 @@ const Index = () => {
                 <p className="mt-1 font-semibold text-primary">Chat with us · +91 96423 33337</p>
               </div>
             </a>
-            <a href="mailto:anunaturals12@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
+            <a href="mailto:anunaturalfoods12@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-colors hover:border-primary">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Mail className="h-5 w-5" />
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
-                <p className="mt-1 font-semibold text-primary">anunaturals12@gmail.com</p>
+                <p className="mt-1 font-semibold text-primary">anunaturalfoods12@gmail.com</p>
               </div>
             </a>
             <div className="flex items-start gap-4 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
