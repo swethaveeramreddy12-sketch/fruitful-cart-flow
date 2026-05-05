@@ -4,6 +4,7 @@ import groundnuts from "@/assets/groundnuts.jpg";
 import groundnutOil from "@/assets/groundnut-oil.jpg";
 import kaju from "@/assets/kaju.png";
 import medjoolDates from "@/assets/medjool-dates.png";
+import medjoolDatesLarge from "@/assets/medjool-dates-large.jpg";
 
 export type Product = {
   id: string;
@@ -62,7 +63,7 @@ export const products: Product[] = [
     description: "Chewy, honey-sweet everyday treat.",
     price: 1000,
     weight: "1 kg pack",
-    image: medjoolDates,
+    image: medjoolDatesLarge,
     calories: "277 kcal / 100g",
   },
   {
