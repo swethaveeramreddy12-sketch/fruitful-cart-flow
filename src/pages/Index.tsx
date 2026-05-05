@@ -8,6 +8,7 @@ import aboutCollage from "@/assets/about-collage.jpg";
 import aboutCollage2 from "@/assets/about-collage-2.jpg";
 
 const features = [
+  { icon: Leaf, title: "100% Natural", text: "No pesticides, no carbide, no shortcuts. Just orchard-fresh mangoes." },
   { icon: Sun, title: "Sun-ripened", text: "Allowed to ripen on the tree until they reach peak sweetness." },
   { icon: Truck, title: "Farm to door", text: "Hand-packed and shipped within 24 hours of harvest." },
 ];
