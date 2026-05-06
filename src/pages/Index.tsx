@@ -1,4 +1,5 @@
-import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star } from "lucide-react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Search } from "lucide-react";
+import { useState, useMemo } from "react";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,6 +36,18 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const [query, setQuery] = useState("");
+  const filteredProducts = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return products;
+    return products.filter(
+      (p) =>
+        p.name.toLowerCase().includes(q) ||
+        p.origin.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q),
+    );
+  }, [query]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -103,13 +116,8 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <div className="relative mt-12 grid gap-6 md:grid-cols-2">
+        <div className="relative mt-12">
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-mango opacity-20 blur-3xl" />
-          <img
-            src={aboutCollage}
-            alt="Lush mango orchard with naturally ripening mangoes"
-            className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-card"
-          />
           <img
             src={aboutCollage2}
             alt="Mangoes, groundnuts and cold-pressed groundnut oil"
@@ -121,18 +129,36 @@ const Index = () => {
       {/* Mangoes & Naturals / Shop */}
       <section id="shop" className="bg-cream py-20">
         <div className="container">
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-8 max-w-2xl">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our harvest</span>
             <h2 className="mt-3 font-display text-4xl font-bold text-primary sm:text-5xl">Mangoes, Oils, Kaju &amp; Dates.</h2>
             <p className="mt-3 text-muted-foreground">
               Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
+          <div className="mb-10 max-w-xl">
+            <label htmlFor="product-search" className="sr-only">Search products</label>
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input
+                id="product-search"
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search mangoes, oils, kaju, dates..."
+                className="h-12 w-full rounded-full border border-border/60 bg-background pl-11 pr-4 text-sm text-foreground shadow-soft outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+              />
+            </div>
           </div>
+          {filteredProducts.length === 0 ? (
+            <p className="text-muted-foreground">No products match &ldquo;{query}&rdquo;.</p>
+          ) : (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
