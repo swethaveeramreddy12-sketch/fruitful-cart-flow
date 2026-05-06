@@ -1,5 +1,6 @@
-import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Search } from "lucide-react";
-import { useState, useMemo } from "react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star } from "lucide-react";
+import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
