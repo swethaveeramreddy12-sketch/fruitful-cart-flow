@@ -145,20 +145,6 @@ const Index = () => {
               ))}
             </div>
           )}
-          <div className="mx-auto mt-12 max-w-xl">
-            <label htmlFor="product-search" className="sr-only">Search products</label>
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                id="product-search"
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search mangoes, oils, kaju, dates..."
-                className="h-12 w-full rounded-full border border-border/60 bg-background pl-11 pr-4 text-sm text-foreground shadow-soft outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
