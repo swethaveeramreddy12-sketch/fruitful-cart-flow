@@ -34,6 +34,12 @@ const Navbar = () => {
             Mangoes &amp; Oils
           </a>
           <a
+            href="/#shop"
+            className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+          >
+            Kaju &amp; Dates
+          </a>
+          <a
             href="/#testimonials"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
           >
