@@ -1,5 +1,6 @@
-import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star, Search } from "lucide-react";
-import { useState, useMemo } from "react";
+import { ArrowRight, Leaf, Sun, Truck, MapPin, Phone, Mail, Star } from "lucide-react";
+import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -36,7 +37,8 @@ const testimonials = [
 ];
 
 const Index = () => {
-  const [query, setQuery] = useState("");
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("q") ?? "";
   const filteredProducts = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return products;
@@ -145,20 +147,6 @@ const Index = () => {
               ))}
             </div>
           )}
-          <div className="mx-auto mt-12 max-w-xl">
-            <label htmlFor="product-search" className="sr-only">Search products</label>
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                id="product-search"
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search mangoes, oils, kaju, dates..."
-                className="h-12 w-full rounded-full border border-border/60 bg-background pl-11 pr-4 text-sm text-foreground shadow-soft outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
