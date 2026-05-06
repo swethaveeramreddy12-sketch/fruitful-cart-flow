@@ -1,4 +1,4 @@
-import reddivaryLogo from "@/assets/reddivary-groups-logo.png";
+import reddivaryLogo from "@/assets/anu-natural-foods-logo.jpeg";
 
 const Footer = () => (
   <footer className="mt-24 border-t border-border/60 bg-primary text-primary-foreground">

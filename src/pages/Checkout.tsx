@@ -92,6 +92,29 @@ const Checkout = () => {
       if (error) throw error;
       if (!data?.merchantOrderId) throw new Error("Order could not be placed");
 
+      // Build WhatsApp notification to shop owner
+      const c = parsed.data;
+      const itemLines = items
+        .map((i) => {
+          const p = findProduct(i.productId);
+          if (!p) return null;
+          return `• ${p.name} (${p.weight}) x${i.quantity} — ${formatINR(p.price * i.quantity)}`;
+        })
+        .filter(Boolean)
+        .join("\n");
+      const msg =
+        `*New order received*\n` +
+        `Order ID: ${data.merchantOrderId}\n` +
+        `Name: ${c.name}\n` +
+        `Phone: ${c.phone}\n` +
+        `Address: ${c.address}, ${c.city} - ${c.pincode}\n\n` +
+        `*Items:*\n${itemLines}\n\n` +
+        `Shipping: ${formatINR(shipping)}\n` +
+        `*Total: ${formatINR(total)}*\n` +
+        `Payment: Cash on Delivery`;
+      const waUrl = `https://wa.me/919642333337?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+
       sessionStorage.setItem("anunatural_pending_clear", "1");
       navigate(`/order-success?order=${encodeURIComponent(data.merchantOrderId)}`);
     } catch (err: unknown) {
