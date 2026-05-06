@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { ShoppingBag, Leaf, User as UserIcon, LogIn } from "lucide-react";
+import { ShoppingBag, Leaf, User as UserIcon, LogIn, Search } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import logo from "@/assets/anu-logo.png";
@@ -8,6 +8,14 @@ const Navbar = () => {
   const { count } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const q = String(data.get("q") || "").trim();
+    const url = q ? `/?q=${encodeURIComponent(q)}#shop` : "/#shop";
+    navigate(url);
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
