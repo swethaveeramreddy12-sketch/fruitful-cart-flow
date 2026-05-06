@@ -97,6 +97,17 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      <div className="container pb-3">
+        <form onSubmit={handleSearch} className="relative mx-auto max-w-xl">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="search"
+            name="q"
+            placeholder="Search mangoes, oils, kaju, dates..."
+            className="h-11 w-full rounded-full border border-border/60 bg-background pl-11 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+          />
+        </form>
+      </div>
     </header>
   );
 };
