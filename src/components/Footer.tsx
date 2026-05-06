@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="mt-24 border-t border-border/60 bg-primary text-primary-foreground">
     <div className="container grid gap-10 py-16 md:grid-cols-3">
       <div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col items-start gap-3">
           <div className="rounded-2xl bg-background p-4">
             <img src={reddivaryLogo} alt="Reddivary Groups" className="h-16 w-auto object-contain" loading="lazy" width={1024} height={1024} />
           </div>
