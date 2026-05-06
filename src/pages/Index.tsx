@@ -37,7 +37,8 @@ const testimonials = [
 ];
 
 const Index = () => {
-  const [query, setQuery] = useState("");
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("q") ?? "";
   const filteredProducts = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return products;
