@@ -1,4 +1,4 @@
-import anuLogo from "@/assets/anu-logo.png";
+import reddivaryLogo from "@/assets/reddivary-groups-logo.png";
 
 const Footer = () => (
   <footer className="mt-24 border-t border-border/60 bg-primary text-primary-foreground">
@@ -6,9 +6,9 @@ const Footer = () => (
       <div>
         <div className="flex items-center gap-4">
           <div className="rounded-2xl bg-background p-4">
-            <img src={anuLogo} alt="Anu Natural Foods" className="h-16 w-auto object-contain" />
+            <img src={reddivaryLogo} alt="Reddivary Groups" className="h-16 w-auto object-contain" loading="lazy" width={1024} height={1024} />
           </div>
-          <p className="font-display text-2xl font-bold text-secondary">Reddivary</p>
+          <p className="font-display text-2xl font-bold text-secondary">Reddivary Groups</p>
         </div>
         <p className="mt-4 max-w-xs text-sm text-primary-foreground/80">
           Naturally ripened mangoes, sourced directly from family-owned orchards across India. No pesticides. No carbide. Just sunshine and patience.
