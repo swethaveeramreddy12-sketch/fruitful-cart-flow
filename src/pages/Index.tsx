@@ -136,7 +136,16 @@ const Index = () => {
               Naturally ripened mangoes and farm-fresh groundnut goodness — straight from Andhra. Ships pan-India.
             </p>
           </div>
-          <div className="mb-10 max-w-xl">
+          {filteredProducts.length === 0 ? (
+            <p className="text-muted-foreground">No products match &ldquo;{query}&rdquo;.</p>
+          ) : (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          )}
+          <div className="mx-auto mt-12 max-w-xl">
             <label htmlFor="product-search" className="sr-only">Search products</label>
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -150,15 +159,6 @@ const Index = () => {
               />
             </div>
           </div>
-          {filteredProducts.length === 0 ? (
-            <p className="text-muted-foreground">No products match &ldquo;{query}&rdquo;.</p>
-          ) : (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          )}
         </div>
       </section>
 
